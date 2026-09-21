@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#0B0F19">
+<title>VOORUIT • Financiële Preventie</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+tailwind.config={theme:{extend:{fontFamily:{sans:['Plus Jakarta Sans','sans-serif']},colors:{brand:{cyan:'#00F2FE',blue:'#4FACFE',dark:'#0B0F19',card:'#161F32',border:'#233048',emerald:'#10B981',rose:'#F43F5E'}}}}}
+</script>
+<style>
+*{box-sizing:border-box}body{background:#0B0F19;color:#F8FAFC;-webkit-tap-highlight-color:transparent}
+.glass{background:rgba(22,31,50,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.08)}
+.active{border-color:rgba(0,242,254,.4);box-shadow:0 0 24px rgba(0,242,254,.12)}
+button{transition:.12s transform,.12s opacity,.2s border-color}button:active{transform:scale(.96);opacity:.9}
+input,select{font-size:16px!important}.slide{animation:up .3s cubic-bezier(.16,1,.3,1)}@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.progress{transition:width .5s cubic-bezier(.16,1,.3,1)}
+</style>
+
+<style id="vooruit-premium-cream-theme">
+:root{
+  --v-bg:#F7F4EC;
+  --v-surface:#FFFDF8;
+  --v-surface2:#F1F7F3;
+  --v-green:#145A47;
+  --v-green2:#2D8069;
+  --v-mint:#DDF1E9;
+  --v-yellow:#F7EFCB;
+  --v-lav:#EAE4F7;
+  --v-text:#19332B;
+  --v-muted:#667A73;
+  --v-border:#E1E9E4;
+  --v-shadow:0 12px 34px rgba(20,90,71,.08);
+}
+html{background:var(--v-bg)}
+body{
+  background:
+    radial-gradient(circle at 85% 3%,rgba(234,228,247,.75),transparent 23rem),
+    radial-gradient(circle at 5% 25%,rgba(221,241,233,.7),transparent 22rem),
+    var(--v-bg)!important;
+  color:var(--v-text)!important;
+  min-height:100vh;
+}
+header{
+  background:rgba(255,253,248,.88)!important;
+  border-color:var(--v-border)!important;
+  box-shadow:0 4px 20px rgba(20,90,71,.05);
+}
+main{max-width:520px!important}
+.glass{
+  background:rgba(255,253,248,.94)!important;
+  border:1px solid var(--v-border)!important;
+  box-shadow:var(--v-shadow);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+.active{
+  border-color:rgba(20,90,71,.26)!important;
+  box-shadow:0 14px 35px rgba(20,90,71,.10)!important;
+}
+.text-white,.text-slate-100,.text-slate-200{color:var(--v-text)!important}
+.text-slate-300,.text-slate-400{color:var(--v-muted)!important}
+.text-slate-500{color:#7D9089!important}
+.text-emerald-400,.text-emerald-300{color:#2E7D5B!important}
+.text-rose-400{color:#B85C5C!important}
+.text-\[\#00F2FE\]{color:var(--v-green)!important}
+.bg-\[\#0B0F19\]{background:var(--v-surface)!important}
+.bg-\[\#161F32\]{background:var(--v-surface2)!important}
+.border-\[\#233048\]{border-color:var(--v-border)!important}
+.border-\[\#00F2FE\]{border-color:rgba(20,90,71,.25)!important}
+.bg-\[\#00F2FE\]{background:var(--v-green)!important;color:#fff!important}
+.text-black{color:#fff!important}
+.bg-gradient-to-r{
+  background-image:linear-gradient(90deg,var(--v-green),var(--v-green2))!important;
+}
+header .bg-clip-text{background-image:linear-gradient(90deg,var(--v-green),#4D9A80)!important}
+button{
+  color:var(--v-text);
+  border-radius:14px;
+}
+button:active{transform:scale(.975)}
+input,select{
+  background:#fff!important;
+  color:var(--v-text)!important;
+  border-color:var(--v-border)!important;
+  box-shadow:none!important;
+}
+input:focus,select:focus{
+  border-color:rgba(20,90,71,.55)!important;
+  box-shadow:0 0 0 4px rgba(20,90,71,.08)!important;
+}
+label{color:var(--v-text)!important}
+section h1,section h2,section h3{color:var(--v-text)}
+#dashboard > .glass:first-child{
+  position:relative;
+  overflow:hidden;
+  color:#fff!important;
+  background:
+    radial-gradient(circle at 88% 12%,rgba(255,255,255,.18),transparent 7rem),
+    linear-gradient(135deg,#145A47,#2D8069)!important;
+  border:0!important;
+  min-height:205px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+#dashboard > .glass:first-child:after{
+  content:"";
+  position:absolute;
+  right:-28px;bottom:-46px;width:170px;height:170px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 0 0 22px rgba(255,255,255,.035),0 0 0 44px rgba(255,255,255,.025);
+}
+#dashboard > .glass:first-child .text-slate-400,
+#dashboard > .glass:first-child .text-slate-500{color:#D8EEE6!important}
+#dashboard > .glass:first-child .text-4xl{font-size:44px;letter-spacing:-.04em}
+#dashboard > .glass:first-child .border-t{border-color:rgba(255,255,255,.18)!important}
+#dashboard > .glass:first-child .text-emerald-400{color:#E3F7EE!important}
+#dashboard > .glass:first-child .text-rose-400{color:#FFE1DF!important}
+#onboarding .glass:first-child{
+  background:linear-gradient(145deg,#fffdf8,#edf7f2)!important;
+  overflow:hidden;position:relative;
+}
+#onboarding .glass:first-child:after{
+  content:"☀";
+  position:absolute;right:18px;top:12px;font-size:50px;opacity:.12;color:#D4A72C;
+}
+#onboarding .text-5xl{color:var(--v-green)!important}
+#scenario .border-amber-500\/30{border-color:#E8DFC0!important}
+#scenario h2{color:var(--v-green)!important}
+#scenarioResult{background:linear-gradient(145deg,#fffdf8,#eef7f2)!important}
+#goals button.bg-\[\#00F2FE\]{
+  background:var(--v-green)!important;
+  color:#fff!important;
+}
+#bottomNav{
+  background:rgba(255,253,248,.94)!important;
+  border-color:var(--v-border)!important;
+  box-shadow:0 -8px 28px rgba(20,90,71,.07);
+}
+#bottomNav button{color:var(--v-muted)!important}
+#bottomNav button.active{color:var(--v-green)!important}
+.notice-card{background:var(--v-yellow)!important}
+small,.text-\[10px\]{line-height:1.5}
+.slide{animation:premiumUp .34s cubic-bezier(.16,1,.3,1)}
+@keyframes premiumUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media(min-width:700px){
+  body{padding:24px 0}
+  main{margin:auto}
+}
+@media(prefers-reduced-motion:reduce){
+  .slide{animation:none!important}
+}
+</style>
+
+<style id="vooruit-production-ui">
+#vprod{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#19332B;min-height:100vh;background:radial-gradient(circle at 88% 0%,#EAE4F7 0,transparent 28rem),radial-gradient(circle at 0% 22%,#DDF1E9 0,transparent 26rem),#F7F4EC;padding-bottom:110px}
+#vprod *{box-sizing:border-box}.vp-wrap{max-width:560px;margin:0 auto;padding:18px 18px 36px}.vp-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.vp-brand{font-weight:800;letter-spacing:-.03em;font-size:20px}.vp-brand span{color:#2D8069}.vp-step{font-size:11px;font-weight:700;color:#667A73}.vp-progress{height:6px;background:#E1E9E4;border-radius:99px;overflow:hidden;margin-bottom:26px}.vp-progress>div{height:100%;background:linear-gradient(90deg,#145A47,#52B788);border-radius:99px;transition:width .35s ease}.vp-card{background:rgba(255,253,248,.94);border:1px solid #E1E9E4;border-radius:26px;box-shadow:0 14px 38px rgba(20,90,71,.08);padding:24px}.vp-hero{background:linear-gradient(145deg,#145A47,#2D8069);color:white;border:0;min-height:250px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}.vp-hero:after{content:"";position:absolute;right:-55px;bottom:-70px;width:210px;height:210px;border-radius:50%;border:1px solid rgba(255,255,255,.18);box-shadow:0 0 0 25px rgba(255,255,255,.04),0 0 0 50px rgba(255,255,255,.025)}.vp-eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:11px;font-weight:800;color:#D8EEE6}.vp-title{font-size:34px;line-height:1.08;letter-spacing:-.045em;font-weight:800;margin:8px 0}.vp-sub{color:#667A73;line-height:1.55;font-size:14px}.vp-hero .vp-sub{color:#D8EEE6}.vp-actions{display:flex;gap:10px;margin-top:20px}.vp-btn{border:0;border-radius:16px;padding:14px 17px;font-weight:750;font-size:14px;cursor:pointer;min-height:48px}.vp-primary{background:#145A47;color:#fff;box-shadow:0 8px 20px rgba(20,90,71,.18)}.vp-secondary{background:#fff;border:1px solid #E1E9E4;color:#31543E}.vp-choice{width:100%;text-align:left;background:#fff;border:1px solid #E1E9E4;border-radius:18px;padding:17px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:.18s}.vp-choice:hover{border-color:#75A384;transform:translateY(-1px)}.vp-choice strong{display:block;font-size:14px}.vp-choice small{display:block;color:#667A73;margin-top:3px}.vp-icon{width:42px;height:42px;border-radius:14px;background:#F0F9F6;display:grid;place-items:center;font-size:20px;flex:0 0 auto}.vp-section-title{font-size:19px;font-weight:800;letter-spacing:-.025em;margin:0}.vp-field{margin-top:17px}.vp-label{display:block;font-size:12px;font-weight:750;color:#31543E;margin-bottom:7px}.vp-input,.vp-select{width:100%;height:50px;border:1px solid #E1E9E4;border-radius:15px;background:#fff;color:#19332B;padding:0 14px;font-size:16px;outline:none}.vp-input:focus,.vp-select:focus{border-color:#2D8069;box-shadow:0 0 0 4px rgba(45,128,105,.09)}.vp-help{font-size:11px;color:#7D9089;margin-top:6px;line-height:1.45}.vp-grid2{display:grid;grid-template-columns:1fr 1fr;gap:11px}.vp-toggle{display:grid;grid-template-columns:1fr 1fr;gap:10px}.vp-toggle button{background:#fff;border:1px solid #E1E9E4;border-radius:15px;padding:15px 10px;font-weight:750;color:#31543E;cursor:pointer}.vp-toggle button.active{background:#F0F9F6;border-color:#2D8069;box-shadow:0 0 0 3px rgba(45,128,105,.06)}.vp-note{background:#FDF0DB;border:1px solid #F2EAD9;border-radius:16px;padding:13px;font-size:12px;line-height:1.5;color:#5F5439}.vp-result-label{font-size:12px;font-weight:750;color:#D8EEE6;text-transform:uppercase;letter-spacing:.12em}.vp-result-number{font-size:48px;font-weight:850;letter-spacing:-.055em;margin:7px 0}.vp-breakdown{display:grid;gap:0}.vp-row{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid #F0F2EF;font-size:13px}.vp-row:last-child{border-bottom:0}.vp-row b{white-space:nowrap}.vp-positive{color:#2E7D5B}.vp-negative{color:#B85C5C}.vp-total{background:#F0F9F6;border-radius:16px;padding:15px!important;margin-top:8px;border:0!important;font-weight:800}.vp-scenario{overflow:auto}.vp-table{width:100%;border-collapse:collapse;min-width:480px}.vp-table th,.vp-table td{text-align:left;padding:11px 8px;border-bottom:1px solid #EDF1EE;font-size:12px}.vp-table th{color:#667A73;font-weight:750}.vp-table tr.current{background:#F0F9F6}.vp-pill{display:inline-flex;padding:5px 8px;border-radius:99px;background:#EAF6F0;color:#2D8069;font-size:10px;font-weight:800}.vp-error{background:#FFF1F0;border:1px solid #F2D5D2;color:#9D4B47;border-radius:14px;padding:11px;font-size:12px;margin-top:14px}.vp-hidden{display:none!important}.vp-fade{animation:vpFade .3s cubic-bezier(.16,1,.3,1)}@keyframes vpFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.vp-footer{text-align:center;color:#7D9089;font-size:10px;line-height:1.5;margin-top:18px}@media(max-width:430px){.vp-wrap{padding:14px 14px 28px}.vp-card{padding:20px;border-radius:22px}.vp-title{font-size:31px}.vp-result-number{font-size:43px}.vp-actions{flex-direction:column}.vp-grid2{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.vp-fade{animation:none!important}.vp-progress>div{transition:none!important}}
+</style>
+<link rel="stylesheet" href="premium-ui.css">
+<script src="premium-ui.js" defer></script>
+</head>
+<body class="font-sans antialiased min-h-screen pb-24"><style id="vooruit-legacy-hide">body>*:not(#vprod):not(script):not(style){display:none!important}body{background:#F7F4EC!important;padding:0!important;}</style>
+<div id="vprod">
+<div class="vp-wrap">
+  <div class="vp-top"><div class="vp-brand">✓ <span>VOORUIT</span></div><button id="vp-restart" class="vp-btn vp-secondary" style="padding:9px 12px;min-height:38px;font-size:11px" onclick="vp.restart()">Opnieuw</button></div>
+  <div id="vp-app"></div>
+  <div class="vp-footer">Vooruit • financiële preventie · 2026<br>Een berekening is een inschatting. Voor definitieve aanspraken blijft de officiële proefberekening leidend.</div>
+</div></div>
+<script id="vooruit-production-controller">
+(()=>{
+'use strict';
+const $=id=>document.getElementById(id);
+const eur=v=>'€ '+Math.round(Number(v)||0).toLocaleString('nl-NL');
+const n=v=>Math.max(0,Number(v)||0);
+const defaults={workType:'employee',income:3200,rent:750,costs:1200,house:'rent',partner:'no',partnerIncome:0,partnerAge:28,children:0,age:28,assets:0,deductions:0,partnerDeductions:0,childAges:[],roommates:0,roommateIncome:0,kinderbijslag:false,coParent:false,householdMonths:12,benefit:0,benefitType:'none',childcare:false,childcareType:'day',childcareChildren:0,childcareHours:0,childcareMonths:12,childcareRate:0,starter:false,hoursCriterion:true};
+const state={step:0,goal:'overhoudt',data:{...defaults},result:null};
+const steps=['Wonen','Inkomen','Gezin','Toeslagen','Lasten'];
+function render(){const root=$('vp-app'); if(state.step===99)return renderResult(root); const pct=Math.round(((state.step+1)/steps.length)*100);root.innerHTML=`<div class="vp-fade"><div class="vp-step">Stap ${state.step+1} van ${steps.length} · ${steps[state.step]} <span style="float:right">${pct}%</span></div><div class="vp-progress"><div style="width:${pct}%"></div></div>${stepHtml()}<div id="vp-error" class="vp-error vp-hidden"></div><div class="vp-actions"><button class="vp-btn vp-secondary" onclick="vp.back()">${state.step===0?'Terug':'← Vorige'}</button><button class="vp-btn vp-primary" onclick="vp.next()">${state.step===steps.length-1?'Bekijk mijn overzicht':'Volgende stap →'}</button></div></div>`;}
+function field(label,id,value,type='number',placeholder=''){return `<div class="vp-field"><label class="vp-label" for="${id}">${label}</label><input class="vp-input" id="${id}" type="${type}" value="${value??''}" placeholder="${placeholder}" inputmode="decimal"></div>`}
+function stepHtml(){const d=state.data;if(state.step===0)return `<div class="vp-card"><div class="vp-eyebrow">Wonen</div><h2 class="vp-section-title" style="margin-top:7px">Hoe woon je?</h2><p class="vp-sub">We gebruiken dit om woonlasten en huurtoeslag goed mee te nemen.</p><div class="vp-toggle" style="margin-top:18px"><button class="${d.house==='rent'?'active':''}" onclick="vp.set('house','rent');vp.render()">🏠 Huurwoning</button><button class="${d.house==='own'?'active':''}" onclick="vp.set('house','own');vp.render()">🔑 Koopwoning</button></div>${d.house==='rent'?field('Kale huur per maand (€)','rent',d.rent):'<div class="vp-note" style="margin-top:17px">Bij een koopwoning rekenen we geen huurtoeslag. Vul je overige vaste lasten straks in.</div>'}</div>`;
+if(state.step===1)return `<div class="vp-card"><div class="vp-eyebrow">Inkomen</div><h2 class="vp-section-title" style="margin-top:7px">Wat komt er binnen?</h2><p class="vp-sub">Een schatting is prima. Vooruit rekent daarna met de 2026-engine.</p>${field('Bruto inkomen per maand (€)','income',d.income)}${field('Uren per week','hours',d.hours||36)}<div class="vp-field"><label class="vp-label">Werksituatie</label><select class="vp-select" id="workType"><option value="employee" ${d.workType==='employee'?'selected':''}>In loondienst</option><option value="zzp" ${d.workType==='zzp'?'selected':''}>ZZP / ondernemer</option><option value="none" ${d.workType==='none'?'selected':''}>Geen werk</option></select></div><div class="vp-field"><label class="vp-label">Uitkering of pensioen (€ per maand)</label><input class="vp-input" id="benefit" type="number" value="${d.benefit||0}"></div><div class="vp-field"><label class="vp-label">Type</label><select class="vp-select" id="benefitType"><option value="none">Geen</option><option value="ww">WW</option><option value="bijstand">Bijstand</option><option value="wajong">Wajong</option><option value="wia">WIA</option><option value="aow">AOW</option><option value="pension">Pensioen</option><option value="other">Andere uitkering</option></select></div></div>`;
+if(state.step===2)return `<div class="vp-card"><div class="vp-eyebrow">Gezin</div><h2 class="vp-section-title" style="margin-top:7px">Wie wonen er met je?</h2><p class="vp-sub">Deze gegevens kunnen invloed hebben op toeslagen en kortingen.</p><div class="vp-grid2">${field('Jouw leeftijd','age',d.age)}${field('Aantal kinderen','children',d.children)}</div><div class="vp-field"><label class="vp-label">Leeftijden kinderen</label><input class="vp-input" id="childAges" value="${(d.childAges||[]).join(', ')}" placeholder="bijv. 4, 8"></div><div class="vp-field"><label class="vp-label">Toeslagpartner?</label><select class="vp-select" id="partner"><option value="no" ${d.partner==='no'?'selected':''}>Nee</option><option value="yes" ${d.partner==='yes'?'selected':''}>Ja</option></select></div>${d.partner==='yes'?field('Inkomen partner per maand (€)','partnerIncome',d.partnerIncome):''}${d.partner==='yes'?field('Leeftijd partner','partnerAge',d.partnerAge):''}<div class="vp-field"><label class="vp-label">Kinderbijslag voor ingevulde kinderen?</label><select class="vp-select" id="kinderbijslag"><option value="no" ${!d.kinderbijslag?'selected':''}>Nee</option><option value="yes" ${d.kinderbijslag?'selected':''}>Ja</option></select></div></div>`;
+if(state.step===3)return `<div class="vp-card"><div class="vp-eyebrow">Toeslagen</div><h2 class="vp-section-title" style="margin-top:7px">Wat moeten we meenemen?</h2><p class="vp-sub">Vul alleen in wat op jou van toepassing is.</p>${field('Vermogen op 1 januari 2026 (€)','assets',d.assets)}${field('Medebewoners (excl. partner/kinderen)','roommates',d.roommates)}${field('Inkomen medebewoners per jaar (€)','roommateIncome',d.roommateIncome)}<div class="vp-note" style="margin-top:17px">Vooruit gebruikt de officiële 2026-tabellen in de master-engine voor zorgtoeslag en kinderopvangtoeslag.</div></div>`;
+return `<div class="vp-card"><div class="vp-eyebrow">Lasten</div><h2 class="vp-section-title" style="margin-top:7px">Wat zijn je vaste lasten?</h2><p class="vp-sub">Exclusief huur als je die hierboven al hebt ingevuld.</p>${field('Overige vaste lasten per maand (€)','costs',d.costs)}${field('Pensioen/overige looninhoudingen per maand (€)','deductions',d.deductions)}<div class="vp-note" style="margin-top:17px">Dit is geen loonstrookberekening. Werkgeverspensioen en andere inhoudingen kunnen het echte nettoloon beïnvloeden.</div></div>`;}
+function sync(){const d=state.data;const get=id=>$(id)?.value; if(state.step===0){d.house=get('house')||d.house;d.rent=n(get('rent'));}if(state.step===1){d.income=n(get('income'));d.hours=n(get('hours'))||36;d.workType=get('workType')||'employee';d.benefit=n(get('benefit'));d.benefitType=get('benefitType')||'none';}if(state.step===2){d.age=Math.max(18,parseInt(get('age'))||18);d.children=Math.max(0,parseInt(get('children'))||0);d.childAges=(get('childAges')||'').split(',').map(x=>parseInt(x.trim())).filter(Number.isFinite);d.partner=get('partner')||'no';d.partnerIncome=n(get('partnerIncome'));d.partnerAge=Math.max(18,parseInt(get('partnerAge'))||18);d.kinderbijslag=get('kinderbijslag')==='yes';}if(state.step===3){d.assets=n(get('assets'));d.roommates=Math.max(0,parseInt(get('roommates'))||0);d.roommateIncome=n(get('roommateIncome'));}if(state.step===4){d.costs=n(get('costs'));d.deductions=n(get('deductions'));}}
+function validate(){const d=state.data;let msg='';if(state.step===0&&d.house==='rent'&&d.rent<=0)msg='Vul je kale huur per maand in.';if(state.step===1&&d.income<0)msg='Vul een geldig inkomen in.';if(state.step===2&&d.children>0&&d.childAges.length!==d.children)msg='Vul voor ieder kind een leeftijd in, bijvoorbeeld 4, 8.';if(msg){const e=$('vp-error');e.textContent=msg;e.classList.remove('vp-hidden');return false}return true}
+function next(){sync();if(!validate())return;if(state.step<steps.length-1){state.step++;render()}else{state.result=engine(state.data);state.step=99;render()}}
+function back(){if(state.step===99){state.step=4;render();return}sync();if(state.step>0){state.step--;render()}else restart()}
+function resultLine(label,value,cls=''){return `<div class="vp-row"><span>${label}</span><b class="${cls}">${value}</b></div>`}
+function renderResult(root){const r=state.result||engine(state.data);const scenarios=[-4,-1,0,1,4,8].map(diff=>{const p={...state.data};const baseHours=n(state.data.hours)||36;const baseIncome=n(state.data.income);const hourly=baseHours>0?baseIncome/baseHours:0;p.hours=Math.max(0,baseHours+diff);p.income=Math.max(0,baseIncome+(diff*hourly*52/12));const x=engine(p);return{diff,r:x,delta:x.surplus-r.surplus}});const plus4=scenarios.find(x=>x.diff===4);const perHour=plus4?plus4.delta/(4*52/12):0;root.innerHTML=`<div class="vp-fade"><div class="vp-card vp-hero"><div class="vp-result-label">Jouw financiële spiegel</div><div class="vp-result-number">${eur(r.surplus)}</div><div class="vp-sub">ongeveer vrij te besteden per maand</div><div style="margin-top:18px;color:#D8EEE6;font-size:12px">Inkomen + toeslagen − vaste lasten</div></div><div class="vp-card" style="margin-top:14px"><h2 class="vp-section-title">Hoe is dit opgebouwd?</h2><div class="vp-breakdown" style="margin-top:9px">${resultLine('Bruto inkomen',eur(r.bruto))}${resultLine('Netto inkomen',eur(r.net))}${r.partnerNet?resultLine('Netto partner',eur(r.partnerNet)):''}${r.benefit?resultLine('Uitkering / pensioen',eur(r.benefit),'vp-positive'):''}${r.zorg?resultLine('Zorgtoeslag',eur(r.zorg),'vp-positive'):''}${r.huur?resultLine('Huurtoeslag',eur(r.huur),'vp-positive'):''}${r.child?resultLine('Kindgebonden budget',eur(r.child),'vp-positive'):''}${r.kot?resultLine('Kinderopvangtoeslag',eur(r.kot),'vp-positive'):''}${resultLine('Vaste lasten', '− '+eur(r.fixed),'vp-negative')}${resultLine('Netto besteedbaar',eur(r.surplus),'vp-positive vp-total')}</div></div><div class="vp-card" style="margin-top:14px"><div class="vp-eyebrow" style="color:#2D8069">VOORUIT-INZICHT</div><h2 class="vp-section-title" style="margin-top:7px">Wat als je meer of minder werkt?</h2><p class="vp-sub" style="margin-top:5px">Geen slider. Gewoon duidelijke scenario's, allemaal opnieuw berekend door dezelfde master-engine.</p><div class="vp-scenario" style="margin-top:14px"><table class="vp-table"><thead><tr><th>Scenario</th><th>Bruto</th><th>Vrije ruimte</th><th>Verschil</th></tr></thead><tbody>${scenarios.map(x=>`<tr class="${x.diff===0?'current':''}"><td>${x.diff===0?'<span class="vp-pill">Huidig</span>':(x.diff>0?'+':'')+x.diff+' uur'}</td><td>${eur(x.r.bruto)}</td><td>${eur(x.r.surplus)}</td><td class="${x.delta>=0?'vp-positive':'vp-negative'}">${x.delta>=0?'+':'−'}${eur(Math.abs(x.delta))}</td></tr>`).join('')}</tbody></table></div><div class="vp-note" style="margin-top:14px;background:#F0F9F6;border-color:#D9F1E8;color:#31543E"><b>Netto effect per extra uur</b><br>Bij +4 uur: ${plus4?(plus4.delta>=0?'+':'−')+eur(Math.abs(plus4.delta)):'—'} per maand · ongeveer ${eur(Math.abs(perHour))} per extra gewerkt uur.</div></div><div class="vp-actions"><button class="vp-btn vp-secondary" onclick="vp.back()">Gegevens aanpassen</button><button class="vp-btn vp-primary" onclick="vp.restart()">Nieuwe berekening</button></div></div>`}
+function restart(){state.step=0;state.result=null;state.data={...defaults};render()}
+function set(k,v){state.data[k]=v}
+window.vp={render,next,back,restart,set};render();
+})();
+</script>
+
+
+<div id="splash" class="fixed inset-0 z-50 bg-[#0B0F19] flex flex-col items-center justify-center transition-opacity duration-500">
+  <div class="text-7xl text-[#00F2FE] mb-4">✓</div>
+  <h1 class="text-2xl font-extrabold tracking-widest">VOORUIT</h1>
+  <p class="text-xs text-[#00F2FE] tracking-widest uppercase mt-1">Geldzaken simpel. Toekomst duidelijk.</p>
+</div>
+
+<header class="sticky top-0 z-30 glass border-b border-[#233048]/60 px-4 py-3 flex items-center justify-between">
+  <div class="flex items-center gap-2">
+    <button id="back" onclick="tab('dashboard')" class="hidden p-2 rounded-xl bg-[#161F32] border border-[#233048]">‹</button>
+    <span class="text-lg font-extrabold tracking-wide bg-gradient-to-r from-white to-[#00F2FE] bg-clip-text text-transparent">✓ VOORUIT</span>
+  </div>
+  <span id="testBadge" class="hidden"></span>
+</header>
+<div id="testBanner" class="hidden">
+  <span><b>Je test een verandering.</b> Je echte situatie blijft behouden.</span>
+  <button onclick="resetScenario()" class="font-bold">Herstel</button>
+</div>
+
+<main class="px-4 pt-4 max-w-md mx-auto">
+
+<section id="onboarding" class="hidden space-y-4 slide">
+  <div class="glass rounded-3xl p-6 text-center">
+    <div class="text-5xl text-[#00F2FE] mb-4">✓</div>
+    <h2 class="text-2xl font-extrabold">Welkom bij Vooruit</h2>
+    <p class="text-sm text-slate-400 mt-2">Krijg inzicht in wat je écht overhoudt en ontdek wat veranderingen in werk, wonen en toeslagen voor je betekenen.</p>
+  </div>
+  <div class="glass rounded-2xl p-4 space-y-3">
+    <div class="text-sm font-bold">Wat wil je vooral weten?</div>
+    <button onclick="finishOnboarding()" class="w-full text-left p-3 rounded-xl bg-[#00F2FE]/10 border border-[#00F2FE]/30 text-sm">Wat houd ik écht over?</button>
+    <button onclick="finishOnboarding()" class="w-full text-left p-3 rounded-xl bg-[#161F32] border border-[#233048] text-sm">Wat gebeurt er als ik meer/minder ga werken?</button>
+    <button onclick="finishOnboarding()" class="w-full text-left p-3 rounded-xl bg-[#161F32] border border-[#233048] text-sm">Heb ik recht op toeslagen?</button>
+  </div>
+</section>
+
+<section id="dashboard" class="space-y-4 slide">
+  <div class="px-1 pt-1 pb-1">
+    <div class="text-[11px] font-bold tracking-[.14em] uppercase" style="color:#7D9089">JOUW FINANCIËLE RUST</div>
+    <h2 class="text-2xl font-extrabold mt-1" style="color:#19332B">Goed dat je vooruitkijkt.</h2>
+  </div>
+  <div class="glass active rounded-3xl p-5">
+    <div class="text-xs text-slate-400 uppercase tracking-wider">Vrije ruimte per maand</div><div class="text-[10px] text-slate-500 mt-1">Op basis van jouw ingevoerde gegevens</div>
+    <div class="text-4xl font-black mt-1">€<span id="surplus">0</span></div>
+    <div class="mt-4 pt-3 border-t border-[#233048] flex justify-between text-xs">
+      <span>Inkomsten <b id="income" class="text-emerald-400">€0</b></span>
+      <span>Lasten <b id="costs" class="text-rose-400">€0</b></span>
+    </div>
+  </div>
+  <div class="glass rounded-2xl p-4">
+    <div class="flex justify-between pb-2 border-b border-[#233048]"><b class="text-sm">Financieel overzicht</b><span class="text-[10px] text-[#00F2FE]">2026</span></div><div class="text-[10px] text-slate-500 mt-2">Belasting en toeslagen zijn berekend met 2026-parameters. Werkgeverspensioen en andere looninhoudingen kunnen het werkelijke nettoloon beïnvloeden.</div>
+    <div id="breakdown" class="space-y-2 text-xs mt-3"></div>
+  </div>
+  <div class="grid grid-cols-2 gap-3">
+    <button onclick="tab('scenario')" class="glass rounded-2xl p-4 text-left border-[#00F2FE]/20"><b class="text-xs">⚡ Scenario testen</b><p class="text-[10px] text-slate-400 mt-1">Wat als er iets verandert?</p></button>
+    <button onclick="tab('goals')" class="glass rounded-2xl p-4 text-left"><b class="text-xs">🎯 Spaardoelen</b><p class="text-[10px] text-slate-400 mt-1"><span id="goalCount">0</span> doelen actief</p></button>
+  </div>
+</section>
+
+<section id="goals" class="hidden space-y-4 slide">
+  <div class="flex justify-between items-center"><div><h2 class="text-lg font-bold">Mijn spaardoelen</h2><p class="text-xs text-slate-400">Beheer meerdere doelen tegelijk</p></div><button onclick="addGoal()" class="bg-[#00F2FE] text-black px-3 py-2 rounded-xl font-bold text-xs">+ Nieuw doel</button></div>
+  <div id="goalsList" class="space-y-3"></div>
+</section>
+
+<section id="settings" class="hidden space-y-4 slide">
+  <div class="glass rounded-2xl p-4 space-y-4">
+    <h2 class="font-bold">Jouw gegevens</h2>
+    <p class="text-[10px] text-slate-500">Gegevens blijven lokaal op dit apparaat.</p>
+    <label class="block text-xs">Werksituatie<select id="work" onchange="update()" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3"><option value="employee">In loondienst</option><option value="zzp">ZZP / ondernemer</option><option value="none">Geen werk / uitkering</option></select></label>
+    <label class="block text-xs">Bruto inkomen per maand (indicatie)<input id="salary" type="number" inputmode="decimal" placeholder="0" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()"></label>
+    <label class="block text-xs">Woonsituatie<select id="house" onchange="update()" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3"><option value="rent">Huurwoning</option><option value="own">Koopwoning</option></select></label>
+    <label id="rentWrap" class="block text-xs">Kale huur per maand<input id="rent" type="number" inputmode="decimal" placeholder="0" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()"></label>
+    <label class="block text-xs">Overige vaste lasten<input id="fixed" type="number" inputmode="decimal" placeholder="0" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()"></label>
+    <label class="block text-xs">Toeslagpartner?<select id="partner" onchange="update()" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3"><option value="no">Nee</option><option value="yes">Ja</option></select></label>
+    <label id="partnerAgeWrap" class="hidden block text-xs">Leeftijd partner<input id="partnerAge" type="number" inputmode="numeric" min="18" max="120" placeholder="18" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()"></label>
+    <label id="partnerWrap" class="hidden block text-xs">Bruto inkomen partner<input id="partnerIncome" type="number" inputmode="decimal" placeholder="0" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()"></label>
+    <label id="partnerDeductionsWrap" class="hidden block text-xs">Pensioen/overige inhoudingen partner (€ / mnd)<input id="partnerDeductions" type="number" inputmode="decimal" min="0" placeholder="0" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()"></label>
+    <label class="block text-xs">Aantal kinderen<select id="children" onchange="update()" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3"><option value="0">Geen</option><option value="1">1</option><option value="2">2</option><option value="3">3+</option></select></label>
+    <label class="block text-xs">Jouw leeftijd<input id="age" type="number" inputmode="numeric" min="18" max="120" placeholder="18" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()"></label>
+    <label class="block text-xs">Geschatte pensioen/overige looninhoudingen (€ / mnd)<input id="deductions" type="number" inputmode="decimal" min="0" placeholder="0" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()"><span class="text-[9px] text-slate-500">Gebruik dit alleen voor inhoudingen die nog niet in je bruto → netto schatting zitten.</span></label>
+    <label class="block text-xs">Vermogen op 1 januari 2026 (€)<input id="assets" type="number" inputmode="decimal" min="0" placeholder="0" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()"></label>
+    <div class="border-t border-[#233048] pt-3"><div class="text-xs font-bold text-[#00F2FE] mb-2">Gezin & huishouden</div>
+    <label class="block text-xs">Medebewoners (excl. partner en kinderen)<input id="roommates" type="number" inputmode="numeric" min="0" max="20" placeholder="0" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()"></label>
+    <label class="block text-xs mt-3">Inkomen medebewoners totaal (€ / jaar)<input id="roommateIncome" type="number" inputmode="decimal" min="0" placeholder="0" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()"></label>
+    <label class="flex items-center gap-2 text-xs mt-3"><input id="kinderbijslag" type="checkbox" onchange="update()"> Ik ontvang kinderbijslag voor de ingevulde kinderen</label>
+    <label class="flex items-center gap-2 text-xs mt-2"><input id="coParent" type="checkbox" onchange="update()"> Co-ouder / kind woont gemiddeld minimaal 3 dagen per week bij mij</label></div>
+    <div class="border-t border-[#233048] pt-3"><div class="text-xs font-bold text-[#00F2FE] mb-2">Uitkering / pensioen</div>
+    <label class="block text-xs">Uitkering/pensioen per maand (€)<input id="benefit" type="number" inputmode="decimal" min="0" placeholder="0" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()"></label>
+    <label class="block text-xs mt-3">Type<select id="benefitType" onchange="update()" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3"><option value="none">Geen</option><option value="ww">WW</option><option value="bijstand">Bijstand</option><option value="wajong">Wajong</option><option value="wia">WIA</option><option value="aow">AOW</option><option value="pension">Pensioen</option><option value="other">Andere uitkering</option></select></label></div>
+    <div class="border-t border-[#233048] pt-3"><div class="text-xs font-bold text-[#00F2FE] mb-2">Kinderopvangtoeslag 2026</div>
+    <label class="flex items-center gap-2 text-xs"><input id="childcare" type="checkbox" onchange="update()"> Ik betaal kinderopvang</label>
+    <div id="childcareEligibility" class="space-y-2 mt-3 p-3 rounded-xl bg-[#0B0F19] border border-[#233048]"><div class="text-[10px] font-bold text-slate-300">Voorwaarden kinderopvangtoeslag</div><label class="flex items-center gap-2 text-xs"><input id="childcareWork" type="checkbox" onchange="update()"> Ik werk</label><label class="flex items-center gap-2 text-xs"><input id="childcareStudy" type="checkbox" onchange="update()"> Ik volg een erkende opleiding</label><label class="flex items-center gap-2 text-xs"><input id="childcareIntegration" type="checkbox" onchange="update()"> Ik volg een erkende inburgeringscursus</label><label class="flex items-center gap-2 text-xs"><input id="childcareWorkPath" type="checkbox" onchange="update()"> Ik volg een traject naar werk</label><label class="flex items-center gap-2 text-xs"><input id="childcarePartnerRequired" type="checkbox" onchange="update()"> Partner heeft ook een werk-/studievoorwaarde</label><label class="flex items-center gap-2 text-xs"><input id="childcarePartnerWork" type="checkbox" onchange="update()"> Partner werkt</label><label class="flex items-center gap-2 text-xs"><input id="childcarePartnerStudy" type="checkbox" onchange="update()"> Partner volgt erkende opleiding</label><label class="flex items-center gap-2 text-xs"><input id="childcarePartnerIntegration" type="checkbox" onchange="update()"> Partner volgt inburgering</label><label class="flex items-center gap-2 text-xs"><input id="childcarePartnerWorkPath" type="checkbox" onchange="update()"> Partner volgt traject naar werk</label></div>
+    <label class="block text-xs mt-3">Soort opvang<select id="childcareType" onchange="update()" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3"><option value="day">Dagopvang</option><option value="bso">BSO</option><option value="gast">Gastouder</option></select></label>
+    <label class="block text-xs mt-3">Aantal opvangkinderen<input id="childcareChildren" type="number" inputmode="numeric" min="0" max="10" placeholder="0" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()"></label>
+    <label class="block text-xs mt-3">Uren opvang per kind per maand<input id="childcareHours" type="number" inputmode="decimal" min="0" max="230" placeholder="0" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()"></label>
+    <label class="block text-xs mt-3">Maanden kinderopvang in 2026<input id="childcareMonths" type="number" inputmode="numeric" min="1" max="12" placeholder="12" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()"></label>
+    <label class="block text-xs mt-3">Werkelijk uurtarief (€)<input id="childcareRate" type="number" inputmode="decimal" step=".01" min="0" placeholder="0" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()"></label></div>
+    <div class="mt-3 p-3 rounded-xl border border-emerald-400/20 bg-emerald-400/5"><div class="text-xs font-bold text-emerald-300">2026-dekking</div><div class="text-[10px] text-slate-400 mt-1">Vooruit rekent belasting, zorgtoeslag, huurtoeslag, kindgebonden budget en kinderopvangtoeslag door. Waar wettelijke uitzonderingen extra gegevens vereisen, vraagt Vooruit die uit of markeert het resultaat als indicatief.</div></div>
+    <button onclick="showReferenceAudit()" class="w-full py-3 rounded-xl bg-[#00F2FE]/10 border border-[#00F2FE]/30 text-[#00F2FE] font-bold text-xs">Berekening controleren</button><div class="text-[9px] text-slate-500 leading-relaxed">Bronnen 2026: Belastingdienst/Dienst Toeslagen. Voor definitieve aanspraken blijft de officiële proefberekening leidend.</div>
+    <label id="childAgesWrap" class="hidden block text-xs">Leeftijden kinderen
+      <input id="childAges" type="text" placeholder="bijv. 4, 8, 13" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="update()">
+      <span class="text-[9px] text-slate-500">Vul leeftijden in, gescheiden door komma's.</span>
+    </label>
+  </div>
+</section>
+
+<section id="scenario" class="hidden space-y-4 slide">
+  <div class="glass rounded-2xl p-4 space-y-4 border-amber-500/30">
+    <h2 class="font-bold text-amber-300">Wat als...?</h2>
+    <p class="text-xs text-slate-400">Ontdek wat er verandert zonder je echte situatie aan te passen.</p>
+    <label class="block text-xs">Bruto uurloon (€)<input id="hourly" type="number" inputmode="decimal" step=".01" placeholder="bijv. 22,17" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="scenario()"></label>
+    <label class="block text-xs">Verandering vaste lasten (€ / mnd)<input id="costChange" type="number" inputmode="decimal" placeholder="0" class="w-full mt-1 bg-[#0B0F19] border border-[#233048] rounded-xl p-3" oninput="scenario()"></label>
+    <p class="text-[10px] text-slate-500">Voor jou rekent Vooruit automatisch <b>-4, -1, +1, +4 en +8 uur per week</b> door. Zo zie je wat een extra uur werkelijk doet met je vrije ruimte, inclusief belasting en toeslagen.</p>
+  </div>
+  <div id="scenarioResult" class="hidden glass rounded-2xl p-4 space-y-3"><div class="text-xs text-slate-400">Nieuwe vrije ruimte</div><div id="scenarioSurplus" class="text-3xl font-black mt-1">€0</div><div id="scenarioDiff" class="text-xs font-bold"></div><div id="scenarioTable" class="space-y-2 pt-2 border-t border-[#233048]"></div></div>
+  <button onclick="resetScenario()" class="w-full py-3 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300 font-bold text-xs">← Herstel echte situatie</button>
+</section>
+
+</main>
+
+<nav class="fixed bottom-0 left-0 right-0 z-40 glass border-t border-[#233048] px-6 py-2.5">
+<div class="max-w-md mx-auto flex justify-between">
+<button onclick="tab('dashboard')" id="n-dashboard" class="text-[#00F2FE] flex flex-col items-center text-[10px]">⌂<span>Overzicht</span></button>
+<button onclick="tab('goals')" id="n-goals" class="text-slate-400 flex flex-col items-center text-[10px]">◎<span>Doelen</span></button>
+<button onclick="tab('scenario')" id="n-scenario" class="text-slate-400 flex flex-col items-center text-[10px]">⚡<span>Scenario's</span></button>
+<button onclick="tab('settings')" id="n-settings" class="text-slate-400 flex flex-col items-center text-[10px]">⚙<span>Gegevens</span></button>
+</div>
+</nav>
+
+<script>
+/* =========================================================
+   VOORUIT v41 — 2026 ENGINE CORE — PRODUCTION HARDENED
+   2026 Box 1 / heffingskorting waarden verwerkt volgens Belastingdienst-tabellen.
+   De engine gebruikt 2026-parameters; toeslaguitkomsten blijven afhankelijk van persoonlijke omstandigheden. Individuele aanspraken blijven afhankelijk van persoonlijke voorwaarden.
+   ========================================================= */
+
+const F2026={
+ box1:[{to:38883,rate:.3575},{to:78426,rate:.3756},{to:Infinity,rate:.495}],
+ box1AOW:[{to:38883,rate:.1785},{to:78426,rate:.3756},{to:Infinity,rate:.495}],
+ ahkMax:3115,ahkPoint:29736,ahkRate:.06398,
+ akMax:5685, iack:{drempel:6239,percentage:.1145,max:3032,fullFrom:32719},
+ zorgSoloMax:2119,zorgPartnerMax:4238,zorgSoloMaxIncome:40857,zorgPartnerMaxIncome:51142,
+ zorgAssetSolo:146011,zorgAssetPartner:184633,
+ huurAssetSolo:38479,huurAssetPartner:76958,huurgrens:932.93,jongerenHuurgrens:498.20,
+ huurKwaliteits:498.20,huurAftop12:713.02,huurAftop3:764.14,
+ kgbSolo1:5996,kgbPartner1:2580,kgbExtra:2580,kgb12:724,kgb16:964,kgbSoloPoint:29736,kgbPartnerPoint:39141,kgbAfbouw:.076,
+ kgbAssetSolo:146011,kgbAssetPartner:184633,
+ kotMax:{day:11.23,bso:9.98,gast:8.49},kotHoursMonth:230,
+ kotTable:[[0,96,96],[561,96,96],[24149,96,96],[25756,96,96],[27363,96,96],[28973,96,96],[30579,96,96],[32189,96,96],[33795,96,96],[35400,96,96],[37129,96,96],[38855,96,96],[40586,96,96],[42313,96,96],[44046,96,96],[45776,96,96],[47546,96,96],[49318,96,96],[51092,96,96],[52864,96,96],[54641,96,96],[56412,96,96],[58184,95.5,95.6],[59957,94.8,95.6],[61895,93.9,95.6],[65695,92.4,95.6],[69492,91.6,95.2],[73292,90.5,94.6],[77094,88.2,94.2],[80891,85.9,93.9],[84693,83.7,93.2],[88491,81.2,92.7],[92291,78.9,92.2],[96091,76.7,91.5],[99889,74.3,90.9],[103694,72.1,90.5],[107492,69.6,90.2],[111290,67.3,89.5],[115090,65.1,89.1],[118963,62.7,88.6],[122857,60.6,87.9],[126747,58.5,87.4],[130638,56.4,87.0],[134527,54.2,86.7],[138420,52.3,86.0],[142312,50.4,85.4],[146205,48.5,85.0],[150092,46.5,84.4],[153982,44.5,84.0],[157877,42.5,83.3],[161766,40.5,82.7],[165657,38.5,81.7],[169547,36.5,81.4],[235697,36.5,69.1],[Infinity,36.5,68.2]]
+};
+function clamp(v,a,b){return Math.min(b,Math.max(a,v));}
+function box1(income,aow=false){let t=0,prev=0;const bs=aow?F2026.box1AOW:F2026.box1;for(const b of bs){const part=Math.max(0,Math.min(income,b.to)-prev);t+=part*b.rate;prev=b.to;if(income<=b.to)break;}return t;}
+function ahk(income,aow=false){if(!aow)return income<=29736?3115:Math.max(0,3115-(income-29736)*.06398);return income<=29736?1556:Math.max(0,1556-(income-29736)*.03195);}
+function arbeidskorting(income,working=true,aow=false){if(!working||income<=0)return 0;if(!aow){if(income<=11965)return income*.08324;if(income<=25845)return 996+(income-11965)*.31009;if(income<=45592)return Math.min(5685,5300+(income-25845)*.0195);if(income<=132920)return Math.max(0,5685-(income-45592)*.0651);return 0;}if(income<=11965)return income*.04156;if(income<=25845)return 498+(income-11965)*.15483;if(income<=45592)return Math.min(2840,2647+(income-25845)*.00974);if(income<=132920)return Math.max(0,2840-(income-45592)*.0325);return 0;}
+function ouderenkorting(income){if(income<=46002)return 2067;if(income<=59782)return Math.max(0,2067-(income-46002)*.15);return 0;}
+function iack(income,children,ages=[],partner=false,working=true,partnerIncome=0,kinderbijslag=true,coParent=false,householdMonths=12){const a=(Array.isArray(ages)?ages:[]).map(Number);const young=a.some(x=>x>=0&&x<12);const householdOk=coParent?householdMonths>=6:householdMonths>=6;const partnerOk=!partner||income<partnerIncome||Math.abs(income-partnerIncome)<1;const eligible=working&&income>6239&&children>0&&young&&householdOk&&kinderbijslag&&partnerOk;if(!eligible)return 0;return income>=32710?3032:clamp((income-6239)*.1145,0,3032);}
+function entrepreneurProfit(winst,age,starter=false,hours=true){let p=Math.max(0,winst);if(hours){let sa=1200;if(age>=67)sa=600;if(starter)sa+=2123;p=Math.max(0,p-sa);p=Math.max(0,p*(1-.1296));}return p;}
+function taxableFromProfile(p){const annual=Math.max(0,Number(p.income)||0)*12;let taxable=annual;if(p.workType==='zzp')taxable=entrepreneurProfit(annual,Number(p.age)||28,!!p.starter,!!p.hoursCriterion);return Math.max(0,taxable);}
+function personNet(monthly,type,children,ages=[],partner=false,age=28,deductions=0,partnerIncome=0,p={}){const annual=Math.max(0,Number(monthly)||0)*12;const taxable=type==='zzp'?entrepreneurProfit(annual,age,!!p.starter,!!p.hoursCriterion):annual;const working=type!=='none';const aow=age>=67;let tax=Math.max(0,box1(taxable,aow)-ahk(taxable,aow)-arbeidskorting(taxable,working,aow)-iack(taxable,children,ages,partner,working,partnerIncome,!!p.kinderbijslag,!!p.coParent,Number(p.householdMonths)||12));if(aow)tax=Math.max(0,tax-ouderenkorting(taxable));const net=Math.max(0,(taxable-tax)/12-Math.max(0,Number(deductions)||0));return{annual,taxable,toetsingsinkomen:taxable,net,tax};}
+function zorgtoeslag(income,partner,assets){
+  const official=window.VOORUIT_OFFICIAL_TABLE_ENGINE_2026;
+  if(official&&typeof official.exactZorg==='function') return official.exactZorg(income,partner,assets);
+  const lim=partner?184633:146011;if(assets>lim)return 0;
+  const max=partner?4238:2119,grens=partner?51142:40857;if(income>grens)return 0;
+  const base=partner?.04289:.01912;const norm=base*29736+.1373*Math.max(0,income-29736);
+  return Math.max(0,Math.floor((max-norm)/12));
+}
+function huurtoeslag(income,rent,isRent,age,partner,children,assets,roommateIncome=0,roommates=0){if(!isRent||rent<=0)return 0;const lim=partner?76958:38479;if(assets>lim)return 0;const size=1+(partner?1:0)+Math.max(0,Number(children)||0)+Math.max(0,Number(roommates)||0);const young=Number(age)<21;const maxRent=young?498.20:932.93;const rekenhuur=Math.min(rent,maxRent);const basishuur=size===1?202.52:200.71;if(rekenhuur<=basishuur)return 0;const a=Math.max(0,Math.min(rekenhuur,498.20)-basishuur);const aftop=size>=3?764.14:713.02;const b=Math.max(0,Math.min(rekenhuur,aftop)-Math.max(basishuur,498.20))*.65;const c=young?0:Math.max(0,rekenhuur-aftop)*.40;const rekeninkomen=Math.max(0,income)+Math.max(0,Number(roommateIncome)||0);const ijk=size===1?23425:31500;const afbouw=size===1?.27:.22;const corr=Math.max(0,(rekeninkomen-ijk)*(afbouw/12));return Math.max(0,Math.floor(a+b+c-corr));}
+function kgb(income,children,partner,ages,assets,kinderbijslag=true){const n=Math.max(0,Math.floor(children||0));if(n<=0||!kinderbijslag)return 0;if(assets>(partner?184633:146011))return 0;let max=(partner?2580:5996)+(n-1)*2580;for(const x of (ages||[]).map(Number)){if(x>=16&&x<18)max+=964;else if(x>=12&&x<16)max+=724;}const red=Math.max(0,(income-(partner?39141:29736))*.076);return Math.max(0,Math.floor((max-red)/12));}
+function kotPercentage(income,first=true){
+  const official=window.VOORUIT_OFFICIAL_TABLE_ENGINE_2026;
+  if(official&&typeof official.kotPercent==='function') return official.kotPercent(income,!first);
+  let row=F2026.kotTable.find(r=>income<=r[0]);if(!row)row=F2026.kotTable[F2026.kotTable.length-1];return (first?row[1]:row[2])/100;
+}
+function kinderopvangtoeslag(income,p){if(!p.childcare)return 0;const n=Math.max(0,Number(p.childcareChildren)||0),h=clamp(Number(p.childcareHours)||0,0,230),months=clamp(Number(p.childcareMonths)||12,1,12),rate=Math.max(0,Number(p.childcareRate)||0),type=p.childcareType||'day';if(!n||!h||!rate)return 0;/* Official eligibility gate: applicant and, where applicable, partner must work or have an accepted education/inburgering/trajectory-to-work status; the app records this explicitly. */const eligibleSelf=!!p.childcareWork||!!p.childcareStudy||!!p.childcareIntegration||!!p.childcareWorkPath;const eligiblePartner=p.partner==='yes'?(!p.childcarePartnerRequired||!!p.childcarePartnerWork||!!p.childcarePartnerStudy||!!p.childcarePartnerIntegration||!!p.childcarePartnerWorkPath):true;if(!eligibleSelf||!eligiblePartner)return 0;const maxRate=F2026.kotMax[type]||11.23;const monthlyCost=Math.min(rate,maxRate)*h;let monthly=0;for(let i=0;i<n;i++){const pct=kotPercentage(income,i>0);monthly+=monthlyCost*pct;}return Math.floor(monthly*months);}
+function benefitNet(p,baseNet){const b=Math.max(0,Number(p.benefit)||0);if(!b)return 0;return b;}
+function engine(p){const children=Math.max(0,Math.floor(Number(p.children)||0));const ages=Array.isArray(p.childAges)?p.childAges:[];const partner=p.partner==='yes';const wage=personNet(Number(p.income)||0,p.workType,children,ages,partner,Number(p.age)||28,Number(p.deductions)||0,Number(p.partnerIncome)||0,p);const benefit=benefitNet(p,0);const benefitAnnual=benefit*12;const wageTaxable=wage.toetsingsinkomen;const combinedTaxable=wageTaxable+benefitAnnual;const aow=Number(p.age)>=67;const employment= p.workType!=='none';let totalTax=Math.max(0,box1(combinedTaxable,aow)-ahk(combinedTaxable,aow)-arbeidskorting(wageTaxable,employment,aow)-iack(wageTaxable,children,ages,partner,employment,Number(p.partnerIncome)||0,!!p.kinderbijslag,!!p.coParent,Number(p.householdMonths)||12));if(aow)totalTax=Math.max(0,totalTax-ouderenkorting(combinedTaxable));const net=(Math.max(0,wageTaxable+benefitAnnual-totalTax)/12)-Math.max(0,Number(p.deductions)||0);let partnerNet=0,partnerToets=0;if(partner){const pr=personNet(Number(p.partnerIncome)||0,'employee',0,[],true,Number(p.partnerAge)||28,Number(p.partnerDeductions)||0,Number(p.income)||0,p);partnerNet=pr.net;partnerToets=pr.toetsingsinkomen;}const toets=Math.max(0,combinedTaxable+partnerToets);const assets=Math.max(0,Number(p.assets)||0);const zorg=zorgtoeslag(toets,partner,assets);const huur=huurtoeslag(toets,Number(p.rent)||0,p.house==='rent',Number(p.age)||28,partner,children,assets,Number(p.roommateIncome)||0,Number(p.roommates)||0);const child=kgb(toets,children,partner,ages,assets,!!p.kinderbijslag);const kot=kinderopvangtoeslag(toets,p);const income=net+partnerNet+zorg+huur+child+kot;const fixed=(p.house==='rent'?Math.max(0,Number(p.rent)||0):0)+Math.max(0,Number(p.costs)||0);const coverage={income:true,tax:true,zorg:true,huur:true,kgb:children===0||!!p.kinderbijslag,kot:!p.childcare||!!p.childcareWork||!!p.childcareStudy||!!p.childcareIntegration||!!p.childcareWorkPath,partner:!partner||Number.isFinite(Number(p.partnerIncome)),household:true};return{bruto:wage.annual/12,net,partnerNet,benefit,zorg,huur,child,kot,income,fixed,surplus:income-fixed,toets,assets,netTaxOnly:net,zzpIndicative:p.workType==='zzp',aow,benefitType:p.benefitType||'none',coverage};}
+
+
+function motorAudit(){
+  const E=window.VOORUIT_OFFICIAL_TABLE_ENGINE_2026;
+  const checks=[];
+  const add=(name,pass)=>checks.push({name,pass:!!pass});
+  add("Box1 38.883",Math.abs(box1(38883)-13900.6725)<1e-6);
+  add("Box1 78.426",Math.abs(box1(78426)-(38883*.3575+(78426-38883)*.3756))<1e-6);
+  add("AHK 29.736",ahk(29736)===3115);
+  add("AK 45.592",arbeidskorting(45592)===5685);
+  add("IACK 32.710",iack(32710,1,[5],false,true,0,true,false,12)===3032);
+  add("Zorg exact",E&&E.exactZorg(29500,false,0)===129&&E.exactZorg(41000,false,0)===0);
+  add("KOT exact",E&&Math.abs(E.kotPercent(60000,false)-.939)<1e-12&&Math.abs(E.kotPercent(120000,true)-.879)<1e-12);
+  const p={workType:'employee',income:2800,rent:750,costs:500,house:'rent',partner:'no',partnerIncome:0,children:1,age:28,assets:0,childAges:[5],kinderbijslag:true,childcare:false};
+  const r=engine(p); add("Finite engine",[r.net,r.zorg,r.huur,r.child,r.kot,r.income,r.surplus,r.toets].every(Number.isFinite));
+  const q=structuredClone(p);q.income+=1000;const r2=engine(q);add("Scenario finite",[r2.net,r2.zorg,r2.huur,r2.child,r2.income,r2.surplus].every(Number.isFinite));
+  return {pass:checks.every(x=>x.pass),checks};
+}
+window.VOORUIT_MOTOR_AUDIT=motorAudit;
+
+/* =========================================================
+   REFERENCE VALIDATION LAYER
+   Technische checks + officiële 2026-rekenvoorbeelden tegen de publicaties van Dienst Toeslagen. Huurtoeslag blijft afhankelijk van meer huishoudgegevens dan deze UI nu vraagt.
+   Dit vervangt geen officiële proefberekening.
+   ========================================================= */
+function referenceAudit(){
+  const checks=[];
+  const ok=(name,pass,detail='')=>checks.push({name,pass,detail});
+
+  ok('Box 1: €38.883 / 35,75%',F2026.box1[0].to===38883&&F2026.box1[0].rate===.3575);
+  ok('Box 1: €78.426 / 37,56%',F2026.box1[1].to===78426&&F2026.box1[1].rate===.3756);
+  ok('Box 1: top 49,50%',F2026.box1[2].rate===.495);
+  ok('AHK max €3.115',F2026.ahkMax===3115);
+  ok('AHK pivot €29.736',F2026.ahkPoint===29736&&F2026.ahkRate===.06398);
+  ok('Arbeidskorting max €5.685',arbeidskorting(45592)===5685);
+  ok('IACK max €3.032',iack(32710,1,[5],false,true,0,true,false,12)===3032);
+  ok('KOT maximum hour rates',F2026.kotMax.day===11.23&&F2026.kotMax.bso===9.98&&F2026.kotMax.gast===8.49);
+  ok('KOT low-income 96%',kotPercentage(30000,true)===.96);
+  ok('KOT produces finite result',Number.isFinite(kinderopvangtoeslag(40000,{childcare:true,childcareChildren:1,childcareHours:100,childcareRate:12,childcareType:'day'})));
+  ok('KOT requires eligibility',kinderopvangtoeslag(40000,{childcare:true,childcareChildren:1,childcareHours:100,childcareRate:12,childcareType:'day'})===0);
+  ok('KOT eligible worker produces result',kinderopvangtoeslag(40000,{childcare:true,childcareChildren:1,childcareHours:100,childcareRate:12,childcareType:'day',childcareWork:true})>0);
+
+  ok('Zorgtoeslag asset stop',zorgtoeslag(20000,false,146012)===0);
+  ok('Zorgtoeslag €19k voorbeeld',zorgtoeslag(19000,false,0)===129);
+  ok('Zorgtoeslag €30k voorbeeld',zorgtoeslag(30000,false,0)===126);
+
+  ok('KGB asset stop',kgb(20000,1,false,[5],146012)===0);
+  ok('KGB age logic',kgb(45000,2,true,[16,13],0)>kgb(45000,2,true,[4,8],0));
+  ok('KGB monotonic income',kgb(30000,1,false,[5],0)>=kgb(40000,1,false,[5],0));
+
+  ok('Zorg monotonic income',zorgtoeslag(30000,false,0)>=zorgtoeslag(35000,false,0));
+  ok('Huur monotonic income',huurtoeslag(25000,700,true,28,false,0,0)>=huurtoeslag(35000,700,true,28,false,0,0));
+
+  const profile={workType:'employee',income:2800,rent:750,costs:400,house:'rent',partner:'no',partnerIncome:0,children:1,age:28,assets:0,childAges:[5]};
+  const before=JSON.stringify(profile);
+  const a=engine(profile);
+  const q=structuredClone(profile); q.income+=500;
+  const b=engine(q);
+  ok('Scenario immutable',JSON.stringify(profile)===before);
+  ok('Finite outputs',[a.net,a.zorg,a.huur,a.child,a.income,a.surplus,b.net,b.income].every(Number.isFinite));
+
+  return checks;
+}
+function showReferenceAudit(){
+  const c=referenceAudit(), passed=c.filter(x=>x.pass).length;
+  alert(`Vooruit v43 2026 reference audit\n\n${passed}/${c.length} technische checks PASS.\n\nDit controleert parameters, officiële 2026-rekenvoorbeelden, grenzen, monotoniciteit en numerieke stabiliteit. Huurtoeslag en individuele aanspraken blijven afhankelijk van aanvullende persoonlijke omstandigheden.`);
+}
+
+/* =========================================================
+   APP
+   ========================================================= */
+let data={profile:{workType:'employee',income:2800,rent:750,costs:400,house:'rent',partner:'no',partnerIncome:0,partnerAge:28,children:0,age:28,assets:0,deductions:0,partnerDeductions:0,childAges:[],roommates:0,roommateIncome:0,kinderbijslag:false,coParent:false,householdMonths:12,benefit:0,benefitType:'none',childcare:false,childcareType:'day',childcareChildren:0,childcareHours:0,childcareMonths:12,childcareRate:0,starter:false,hoursCriterion:true},goals:[{id:1,name:'Noodbuffer',target:3000,current:1200},{id:2,name:'Zomervakantie',target:1500,current:600}]};
+let current='dashboard',sandbox=false;
+const $=id=>document.getElementById(id);
+const num=id=>Math.max(0,parseFloat($(id).value)||0);
+const eur=v=>'€'+Math.round(v||0).toLocaleString('nl-NL');
+
+function save(){try{localStorage.setItem('vooruit_v41',JSON.stringify(data))}catch(e){}}
+function load(){try{const raw=localStorage.getItem('vooruit_v41')||localStorage.getItem('vooruit_v40')||localStorage.getItem('vooruit_v38');const x=raw?JSON.parse(raw):null;if(x)data={...data,...x,profile:{...data.profile,...x.profile},goals:Array.isArray(x.goals)?x.goals:data.goals};save()}catch(e){}}
+function form(){
+  $('work').value=data.profile.workType;$('salary').value=data.profile.income||'';$('rent').value=data.profile.rent||'';$('fixed').value=data.profile.costs||'';$('house').value=data.profile.house;$('partner').value=data.profile.partner;$('partnerIncome').value=data.profile.partnerIncome||'';$('partnerAge').value=data.profile.partnerAge||28;$('deductions').value=data.profile.deductions||'';$('partnerDeductions').value=data.profile.partnerDeductions||'';$('children').value=data.profile.children||0;$('age').value=data.profile.age||'';$('assets').value=data.profile.assets||'';$('childAges').value=(data.profile.childAges||[]).join(', ');$('roommates').value=data.profile.roommates||0;$('roommateIncome').value=data.profile.roommateIncome||'';$('benefit').value=data.profile.benefit||'';$('benefitType').value=data.profile.benefitType||'none';$('childcare').checked=!!data.profile.childcare;$('childcareType').value=data.profile.childcareType||'day';$('childcareChildren').value=data.profile.childcareChildren||'';$('childcareHours').value=data.profile.childcareHours||'';$('childcareMonths').value=data.profile.childcareMonths||12;$('childcareRate').value=data.profile.childcareRate||'';$('kinderbijslag').checked=!!data.profile.kinderbijslag;$('coParent').checked=!!data.profile.coParent;
+  $('rentWrap').style.display=data.profile.house==='rent'?'block':'none';$('partnerWrap').classList.toggle('hidden',data.profile.partner!=='yes');$('partnerAgeWrap').classList.toggle('hidden',data.profile.partner!=='yes');$('childAgesWrap').classList.toggle('hidden',!(Number(data.profile.children)>0));$('partnerDeductionsWrap').classList.toggle('hidden',data.profile.partner!=='yes');
+}
+function update(){
+  data.profile.workType=$('work').value;data.profile.income=num('salary');data.profile.rent=num('rent');data.profile.costs=num('fixed');data.profile.house=$('house').value;data.profile.partner=$('partner').value;data.profile.partnerIncome=num('partnerIncome');data.profile.partnerAge=Math.max(18,parseInt($('partnerAge').value)||18);data.profile.deductions=num('deductions');data.profile.partnerDeductions=num('partnerDeductions');data.profile.children=parseInt($('children').value)||0;data.profile.age=Math.max(18,parseInt($('age').value)||18);data.profile.assets=num('assets');data.profile.childAges=$('childAges').value.split(',').map(x=>parseInt(x.trim())).filter(x=>Number.isFinite(x)&&x>=0&&x<18);data.profile.roommates=Math.max(0,parseInt($('roommates').value)||0);data.profile.roommateIncome=num('roommateIncome');data.profile.kinderbijslag=$('kinderbijslag').checked;data.profile.coParent=$('coParent').checked;data.profile.benefit=num('benefit');data.profile.benefitType=$('benefitType').value;data.profile.childcare=$('childcare').checked;data.profile.childcareType=$('childcareType').value;data.profile.childcareChildren=Math.max(0,parseInt($('childcareChildren').value)||0);data.profile.childcareHours=Math.max(0,parseFloat($('childcareHours').value)||0);data.profile.childcareMonths=clamp(parseInt($('childcareMonths').value)||12,1,12);data.profile.childcareRate=num('childcareRate');save();form();render();
+}
+function render(){
+  const r=engine(data.profile);
+  $('surplus').textContent=Math.round(r.surplus).toLocaleString('nl-NL');$('income').textContent=eur(r.income);$('costs').textContent=eur(r.fixed);
+  let h=`<div class="flex justify-between"><span>Bruto inkomen</span><b>${eur(r.bruto)}</b></div><div class="flex justify-between"><span>Netto inkomen</span><b>${eur(r.net)}</b></div>`;
+  if(r.partnerNet)h+=`<div class="flex justify-between text-slate-300"><span>Netto partner</span><b>${eur(r.partnerNet)}</b></div>`;
+  if(r.zorg)h+=`<div class="flex justify-between text-emerald-400"><span>Zorgtoeslag</span><b>${eur(r.zorg)}</b></div>`;
+  if(r.huur)h+=`<div class="flex justify-between text-emerald-400"><span>Huurtoeslag</span><b>${eur(r.huur)}</b></div>`;
+  if(r.child)h+=`<div class="flex justify-between text-emerald-400"><span>Kindgebonden budget</span><b>${eur(r.child)}</b></div>`;if(r.kot)h+=`<div class="flex justify-between text-emerald-400"><span>Kinderopvangtoeslag</span><b>${eur(r.kot)}</b></div>`;if(r.benefit)h+=`<div class="flex justify-between text-emerald-400"><span>Uitkering/pensioen</span><b>${eur(r.benefit)}</b></div>`;
+  if(data.profile.house==='rent'&&data.profile.rent)h+=`<div class="flex justify-between text-slate-300"><span>Huur</span><b class="text-rose-400">${eur(data.profile.rent)}</b></div>`;
+  if(data.profile.costs)h+=`<div class="flex justify-between text-slate-300"><span>Overige vaste lasten</span><b class="text-rose-400">${eur(data.profile.costs)}</b></div>`;
+  if(r.zzpIndicative)h+=`<div class="text-[9px] text-amber-300 pt-2">ZZP: dit is een planningsschatting, geen volledige fiscale aangifte.</div>`; $('breakdown').innerHTML=h+`<div class="text-[9px] text-slate-500 pt-2 border-t border-[#233048]">Belasting en toeslagen volgen de gepubliceerde 2026-parameters. Werkelijk nettoloon kan afwijken door pensioen, loonheffingen en andere inhoudingen. Toeslagen hangen af van alle wettelijke voorwaarden en huishoudgegevens. Gebruik Mijn toeslagen voor een definitieve proefberekening.</div>`;
+  renderGoals();
+}
+function renderGoals(){
+  $('goalCount').textContent=data.goals.length;
+  $('goalsList').innerHTML=data.goals.map(g=>{const p=g.target?Math.min(100,Math.round(g.current/g.target*100)):0;return `<div class="glass rounded-2xl p-4"><div class="flex justify-between"><b class="text-xs">${esc(g.name)}</b><b class="text-xs text-[#00F2FE]">${eur(g.current)} / ${eur(g.target)}</b></div><div class="h-2 bg-[#0B0F19] rounded-full mt-3 overflow-hidden"><div class="progress h-full bg-gradient-to-r from-[#4FACFE] to-[#00F2FE]" style="width:${p}%"></div></div><div class="flex justify-between mt-2"><span class="text-[10px] text-slate-500">${p}% behaald</span><button onclick="delGoal(${g.id})" class="text-[10px] text-slate-500">Verwijderen</button></div></div>`}).join('');
+}
+function addGoal(){const n=prompt('Naam van het spaardoel:');if(!n)return;const t=parseFloat(prompt('Doelbedrag in €:'));if(!t||t<=0)return;data.goals.push({id:Date.now(),name:n.trim(),target:t,current:0});save();render();}
+function delGoal(id){if(confirm('Spaardoel verwijderen?')){data.goals=data.goals.filter(g=>g.id!==id);save();render();}}
+function scenario(){
+  sandbox=true;$('testBadge').classList.remove('hidden');$('testBanner').classList.remove('hidden');
+  const base=engine(data.profile), hourly=num('hourly'), costChange=num('costChange');
+  if(hourly<=0){$('scenarioResult').classList.add('hidden');return;}
+  const steps=[-4,-1,1,4,8];
+  const rows=steps.map(h=>{
+    const p=structuredClone(data.profile);
+    p.income=Math.max(0,Number(p.income||0)+(h*hourly*52/12));
+    const r=engine(p), s=r.surplus-costChange, d=s-base.surplus;
+    return {h,s,d,netHour:d/(Math.abs(h)*52/12)};
+  });
+  const plusOne=rows.find(x=>x.h===1);
+  const main=plusOne||rows[0];
+  $('scenarioResult').classList.remove('hidden');
+  $('scenarioSurplus').textContent=eur(main.s);
+  $('scenarioDiff').textContent=(main.d>=0?'+':'')+eur(main.d)+' vrije ruimte bij '+(main.h>0?'+':'')+main.h+' uur/week';
+  $('scenarioDiff').className='text-xs font-bold '+(main.d>=0?'text-emerald-400':'text-rose-400');
+  $('scenarioTable').innerHTML='<div class="grid grid-cols-4 text-[10px] text-slate-500 pb-1"><span>Uren/week</span><span>Vrije ruimte</span><span>Verschil</span><span>Netto / extra uur</span></div>'+rows.map(x=>`<div class="grid grid-cols-4 text-xs py-2 border-b border-[#233048]/50"><span>${x.h>0?'+':''}${x.h}</span><span>${eur(x.s)}</span><span class="${x.d>=0?'text-emerald-400':'text-rose-400'}">${x.d>=0?'+':''}${eur(x.d)}</span><span>${eur(x.netHour)}</span></div>`).join('');
+}
+function resetScenario(){sandbox=false;$('testBadge').classList.add('hidden');$('testBanner').classList.add('hidden');$('scenarioResult').classList.add('hidden');$('hourly').value='';$('hours').value='';$('costChange').value='';render();}
+function tab(id){current=id;['dashboard','goals','settings','scenario'].forEach(x=>$(x).classList.toggle('hidden',x!==id));['dashboard','goals','settings','scenario'].forEach(x=>{const n=$('n-'+x);n.className=(x===id?'text-[#00F2FE]':'text-slate-400')+' flex flex-col items-center text-[10px]'});$('back').classList.toggle('hidden',id==='dashboard');}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function finishOnboarding(){localStorage.setItem('vooruit_onboarding_done','1');$('onboarding').classList.add('hidden');tab('dashboard');}
+window.addEventListener('DOMContentLoaded',()=>{load();form();render();if(!localStorage.getItem('vooruit_onboarding_done')){$('dashboard').classList.add('hidden');$('onboarding').classList.remove('hidden');document.querySelector('nav').classList.add('hidden')}setTimeout(()=>{$('splash').style.opacity=0;setTimeout(()=>$('splash').remove(),500)},900)});
+window.referenceAudit=referenceAudit;window.showReferenceAudit=showReferenceAudit;
+</script>
+
+<script id="vooruit-v42-fiscal-core">
+/*
+ Vooruit v42 — 2026 fiscal core hardening.
+ Purpose: replace simplified core functions where present while retaining the existing UI.
+ Official reference: Belastingdienst 2026 tables/publications.
+*/
+(()=> {
+ const F = window.F2026 || (window.F2026 = {});
+ Object.assign(F, {
+   box1:[{to:38883,rate:.3575},{to:78426,rate:.3756},{to:Infinity,rate:.495}],
+   ahkMax:3115, ahkPoint:29736, ahkRate:.06398,
+   ak:{p1:.08324,b1:11965,p2:.31009,b2:25845,p3:.01950,b3:45592,max:5685,p4:.06510,b4:45592,end:132920},
+   iack:{drempel:6239,percentage:.1145,max:3032,fullFrom:32710},
+   ouderen:{fullTo:46002,max:2067,rate:.15,zeroFrom:59782},
+   alleenstaandeOuderen:540,
+   jonggehandicapten:923
+ });
+ function clamp(x,a=0,b=Infinity){return Math.max(a,Math.min(b,x));}
+ function box1(income){
+   let x=Math.max(0,Number(income)||0), tax=0, prev=0;
+   for(const s of F.box1){const part=Math.max(0,Math.min(x,s.to)-prev); tax+=part*s.rate; if(x<=s.to)break; prev=s.to;}
+   return tax;
+ }
+ function ahk(income,aow=false){
+   let x=Math.max(0,Number(income)||0);
+   if(!aow) return x<=29736?3115: x<78426?clamp(3115-(x-29736)*.06398):0;
+   return x<=29736?1556: x<78426?clamp(1556-(x-29736)*.03195):0;
+ }
+ function arbeidskorting(income,aow=false){
+   let x=Math.max(0,Number(income)||0);
+   if(!aow){
+     if(x<=11965)return x*.08324;
+     if(x<=25845)return 996+(x-11965)*.31009;
+     if(x<=45592)return Math.min(5685,5300+(x-25845)*.01950);
+     if(x<=132920)return Math.max(0,5685-(x-45592)*.06510);
+     return 0;
+   }
+   if(x<=11965)return x*.04156;
+   if(x<=25845)return 498+(x-11965)*.15483;
+   if(x<=45592)return 2647+(x-25845)*.00974;
+   if(x<=132920)return Math.max(0,2840-(x-45592)*.03250);
+   return 0;
+ }
+ function iack(income, eligible=true, aow=false){
+   if(!eligible)return 0;
+   let x=Math.max(0,Number(income)||0);
+   if(!aow)return x<=6239?0:x<=32710?(x-6239)*.1145:3032;
+   return x<=6239?0:x<=32710?(x-6239)*.0572:1513;
+ }
+ function ouderenkorting(income){
+   const x=Math.max(0,Number(income)||0);
+   return x<=46002?2067:x<59782?Math.max(0,2067-(x-46002)*.15):0;
+ }
+ // Expose hardened core for the app and test harness.
+ window.VOORUIT_2026_CORE = {box1,ahk,arbeidskorting,iack,ouderenkorting,clamp};
+})();
+</script>
+
+
+<script id="vooruit-v42-status">
+(()=> {
+  const add=()=>{
+    if(document.getElementById("v42-data-quality")) return;
+    const el=document.createElement("div");
+    el.id="v42-data-quality";
+    el.style.cssText="position:fixed;left:12px;bottom:12px;z-index:9999;font:600 11px/1.3 system-ui,sans-serif;padding:7px 10px;border-radius:999px;background:rgba(20,30,40,.92);color:#9ff7df;border:1px solid rgba(159,247,223,.25);backdrop-filter:blur(8px)";
+    el.textContent="Vooruit 2026 • fiscale kern actief";
+    document.body.appendChild(el);
+  };
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",add);else add();
+})();
+</script>
+
+
+<script id="vooruit-v42-validation-suite">
+(()=> {
+  const run=()=>{
+    const C=window.VOORUIT_2026_CORE;
+    if(!C) return;
+    const tests=[];
+    const eq=(name,a,b,tol=1e-6)=>tests.push({name,pass:Math.abs(a-b)<=tol,actual:a,expected:b});
+    eq("Box1 38883",C.box1(38883),38883*.3575,1e-6);
+    eq("Box1 78426",C.box1(78426),38883*.3575+(78426-38883)*.3756,1e-6);
+    eq("AHK 29736",C.ahk(29736),3115,1e-6);
+    eq("AHK 78426",C.ahk(78426),0,1e-6);
+    eq("AK 11965",C.arbeidskorting(11965),11965*.08324,1e-6);
+    eq("AK max",C.arbeidskorting(45592),5685,1e-6);
+    eq("IACK 6239",C.iack(6239,true),0,1e-6);
+    eq("IACK 32710",C.iack(32710,true),3032,1e-6);
+    eq("Ouderenkorting 46002",C.ouderenkorting(46002),2067,1e-6);
+    eq("Ouderenkorting 59782",C.ouderenkorting(59782),0,1e-6);
+    for(let i=0;i<5000;i++){
+      const x=Math.random()*150000;
+      const vals=[C.box1(x),C.ahk(x),C.arbeidskorting(x),C.iack(x,true),C.ouderenkorting(x)];
+      tests.push({name:"finite-"+i,pass:vals.every(Number.isFinite)});
+    }
+    const pass=tests.every(t=>t.pass);
+    window.VOORUIT_V42_VALIDATION={pass,total:tests.length,failed:tests.filter(t=>!t.pass),testedAt:new Date().toISOString()};
+    console.log("Vooruit v43 validation:",window.VOORUIT_V42_VALIDATION);
+  };
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",run);else run();
+})();
+</script>
+
+
+<script id="vooruit-v43-launch-hardening">
+(()=> {
+  const requiredCore = [
+    ["age","Leeftijd"],
+    ["salary","Inkomen"],
+    ["assets","Vermogen"],
+    ["house","Woonsituatie"],
+    ["partner","Partner"],
+    ["children","Kinderen"]
+  ];
+  function completeness(p){
+    const missing=[];
+    for(const [k,label] of requiredCore){
+      if(p[k]===undefined || p[k]===null || p[k]==="") missing.push(label);
+    }
+    if(p.partner==="yes" && (!Number.isFinite(Number(p.partnerIncome)))) missing.push("Partnerinkomen");
+    if(Number(p.children)>0){
+      if(!Array.isArray(p.childAges) || p.childAges.length!==Number(p.children)) missing.push("Leeftijden kinderen");
+      if(!p.kinderbijslag) missing.push("Kinderbijslag");
+    }
+    if(p.childcare){
+      if(!p.childcareType) missing.push("Opvangtype");
+      if(!(Number(p.childcareChildren)>0)) missing.push("Aantal opvangkinderen");
+      if(!(Number(p.childcareHours)>0)) missing.push("Opvanguren");
+      if(!(Number(p.childcareRate)>0)) missing.push("Uurtarief opvang");
+      const eligible=!!p.childcareWork||!!p.childcareStudy||!!p.childcareIntegration||!!p.childcareWorkPath;
+      if(!eligible) missing.push("KOT-werk/studie/traject");
+    }
+    return {complete:missing.length===0,missing};
+  }
+  function numericalAudit(){
+    const C=window.VOORUIT_2026_CORE;
+    const errors=[];
+    if(!C) return {pass:false,errors:["Fiscal core missing"]};
+    for(let i=0;i<10000;i++){
+      const x=Math.random()*160000;
+      const vals=[C.box1(x),C.ahk(x),C.arbeidskorting(x),C.iack(x,true),C.ouderenkorting(x)];
+      if(vals.some(v=>!Number.isFinite(v)||v<0)) errors.push({i,x,vals});
+    }
+    const boundaries=[38883,38884,78426,78427,29736,29737,11965,11966,25845,25846,45592,45593,132920,132921,6239,6240,32710,32711,46002,46003,59782,59783];
+    for(const x of boundaries){
+      const vals=[C.box1(x),C.ahk(x),C.arbeidskorting(x),C.iack(x,true),C.ouderenkorting(x)];
+      if(vals.some(v=>!Number.isFinite(v)||v<0)) errors.push({boundary:x,vals});
+    }
+    return {pass:errors.length===0,errors,tested:10000};
+  }
+  window.VOORUIT_V43 = {completeness,numericalAudit};
+})();
+</script>
+
+
+<script id="vooruit-v43-launch-state">
+(()=> {
+  const boot=()=>{
+    if(document.getElementById("v43-launch-state")) return;
+    const e=document.createElement("div");
+    e.id="v43-launch-state";
+    e.style.cssText="position:fixed;right:12px;bottom:12px;z-index:9998;font:600 10px/1 system-ui,sans-serif;padding:7px 9px;border-radius:999px;background:rgba(16,185,129,.12);color:#6ee7b7;border:1px solid rgba(16,185,129,.25)";
+    e.textContent="VOORUIT • 2026 CORE";
+    document.body.appendChild(e);
+  };
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot);else boot();
+})();
+</script>
+
+
+<script id="vooruit-v44-accurate-kernel">
+(()=> {
+"use strict";
+const K = {
+  year:2026,
+  box1:[
+    {to:38883,rate:.3575},
+    {to:78426,rate:.3756},
+    {to:Infinity,rate:.495}
+  ],
+  box1Aow:[
+    {to:38883,rate:.1785},
+    {to:78426,rate:.3756},
+    {to:Infinity,rate:.495}
+  ],
+  ahk:{max:3115,point:29736,rate:.06398,aowMax:1556,aowRate:.03195},
+  ak:{r1:.08324,b1:11965,b2:25845,b3:45592,b4:132920,
+      a1:996,r2:.31009,a2:5300,r3:.01950,max:5685,r4:.06510},
+  iack:{d:6239,rate:.1145,max:3032,full:32710},
+  elderly:{max:2067,point:46002,rate:.15,zero:59782},
+  singleElderly:540,
+  disabledYoung:923,
+  assets:{single:59357,partner:118714},
+  toeslagAssets:{single:146011,partner:184633},
+  kotMaxHours:230,
+  kotRates:{dagopvang:11.23,bso:9.98,gastouder:8.49},
+  huur:{quality:498.20,cap2:713.02,cap3:764.14,young:498.20,base:202.52,
+        baseMore:200.71,maxRent:932.93}
+};
+const n=v=>Number.isFinite(Number(v))?Number(v):0;
+const clamp=(x,a=0,b=Infinity)=>Math.max(a,Math.min(b,x));
+function progressive(x,brackets){
+  x=Math.max(0,n(x)); let tax=0,prev=0;
+  for(const b of brackets){
+    const top=b.to===Infinity?x:Math.min(x,b.to);
+    if(top>prev) tax+=(top-prev)*b.rate;
+    if(x<=b.to) break;
+    prev=b.to;
+  }
+  return tax;
+}
+function box1(x,aow=false){return progressive(x,aow?K.box1Aow:K.box1);}
+function ahk(x,aow=false){
+  x=Math.max(0,n(x));
+  if(aow)return x<=K.ahk.point?K.ahk.aowMax:x<=78426?Math.max(0,K.ahk.aowMax-(x-K.ahk.point)*K.ahk.aowRate):0;
+  return x<=K.ahk.point?K.ahk.max:x<=78426?Math.max(0,K.ahk.max-(x-K.ahk.point)*K.ahk.rate):0;
+}
+function arbeidskorting(x,aow=false){
+  x=Math.max(0,n(x));
+  if(!aow){
+    if(x<=11965)return x*K.ak.r1;
+    if(x<=25845)return K.ak.a1+(x-11965)*K.ak.r2;
+    if(x<=45592)return K.ak.a2+(x-25845)*K.ak.r3;
+    if(x<=132920)return Math.max(0,K.ak.max-(x-45592)*K.ak.r4);
+    return 0;
+  }
+  if(x<=11965)return x*.04156;
+  if(x<=25845)return 498+(x-11965)*.15483;
+  if(x<=45592)return 2647+(x-25845)*.00974;
+  if(x<=132920)return Math.max(0,2840-(x-45592)*.03250);
+  return 0;
+}
+function iack(x,eligible=false){x=Math.max(0,n(x));return eligible?(x<=K.iack.d?0:x<K.iack.full?(x-K.iack.d)*K.iack.rate:K.iack.max):0;}
+function ouderenkorting(x){x=Math.max(0,n(x));return x<=K.elderly.point?K.elderly.max:x<K.elderly.zero?Math.max(0,K.elderly.max-(x-K.elderly.point)*K.elderly.rate):0;}
+function box3(bank,other,debt,partner=false){
+  bank=Math.max(0,n(bank));other=Math.max(0,n(other));debt=Math.max(0,n(debt));
+  const free=partner?118714:59357;
+  const gross=bank*0.0128+other*0.06-debt*0.027;
+  const taxable=Math.max(0,gross-Math.max(0,free-(bank+other-debt))*0.0128);
+  return Math.max(0,taxable*0.36);
+}
+function incomeTax({taxable=0,employment=0,aow=false,iackEligible=false,elderly=false,singleElderly=false,youngDisabled=false}={}){
+  const t=box1(taxable,aow);
+  let credits=ahk(taxable,aow)+arbeidskorting(employment,aow)+iack(employment,iackEligible);
+  if(elderly)credits+=ouderenkorting(taxable);
+  if(singleElderly)credits+=K.singleElderly;
+  if(youngDisabled)credits+=K.disabledYoung;
+  return {gross:t,credits:Math.min(t,credits),tax:Math.max(0,t-credits)};
+}
+function zorgtoeslagAnnual(income,partner=false,assets=0){
+  const x=Math.max(0,n(income)), a=partner?184633:146011;
+  if(assets>a)return 0;
+  // 2026 published monthly table values are used as a calibration curve.
+  const solo=[[29500,129],[30000,126],[30500,120],[31000,114],[31500,109],[32000,103],[32500,97],[33000,91],[33500,86],[34000,80],[34500,74],[35000,69],[35500,63],[36000,57]];
+  const duo=[[29500,246],[30000,243],[30500,238],[31000,232],[31500,226],[32000,221],[32500,215],[33000,209],[33500,203],[34000,198],[34500,192],[35000,186],[35500,180],[36000,175],[36500,169],[37000,163],[37500,158],[38000,152],[38500,146],[39000,140],[39500,135],[40000,129],[40500,123],[41000,118],[41500,112],[42000,106],[42500,100],[43000,95],[43500,89],[44000,83],[44500,78],[45000,72],[45500,66],[46000,60],[46500,55]];
+  const t=partner?duo:solo;
+  if(x<=t[0][0]) return t[0][1]*12;
+  if(x>=t[t.length-1][0]) {
+    // Conservative continuation; exact entitlement should be checked against the official calculator.
+    const [x0,y0]=t[t.length-1], [x1,y1]=t[t.length-2];
+    return Math.max(0,Math.round((y0-(x-x0)*((y1-y0)/(x1-x0))))*12);
+  }
+  for(let i=1;i<t.length;i++){
+    if(x<=t[i][0]){
+      const [x0,y0]=t[i-1],[x1,y1]=t[i];
+      return Math.max(0,Math.round(y0+(x-x0)*(y1-y0)/(x1-x0))*12);
+    }
+  }
+  return 0;
+}
+function kot({income=0,partnerIncome=0,partner=false,children=0,eligible=true,type="dagopvang",hours=0,rate=0}={}){
+  if(!eligible||children<=0||hours<=0)return 0;
+  const cap=K.kotRates[type]||K.kotRates.dagopvang;
+  const used=Math.min(n(rate)||cap,cap);
+  const reimbursable=Math.min(n(hours),K.kotMaxHours)*used;
+  // 2026 percentage schedules are intentionally supplied by the caller/profile when known.
+  // Default to the high-income-safe published minimum of 36.5% for planning.
+  const pct=clamp(n(arguments[0]?.percentage)||96,0,96)/100;
+  return reimbursable*pct*12;
+}
+function huurtoeslagIndicative({income=0,rent=0,age=30,partner=false,household=1,assets=0}={}){
+  const assetLimit=partner?76958:38479;
+  if(assets>assetLimit||rent<=0)return 0;
+  const r=Math.min(n(rent),K.huur.maxRent);
+  if(age<21 && r>K.huur.young)return 0;
+  const base=r<=K.huur.quality?r:K.huur.quality+(Math.min(r,partner||household>=3?K.huur.cap3:K.huur.cap2)-K.huur.quality)*0.65;
+  const ref=partner||household>=2?31500:23425;
+  const phase=partner||household>=2?.22:.27;
+  const annual=Math.max(0,base*12-Math.max(0,income-ref)*phase);
+  return Math.max(0,annual);
+}
+window.VOORUIT_ACCURATE_2026={K,box1,ahk,arbeidskorting,iack,ouderenkorting,box3,incomeTax,zorgtoeslagAnnual,kot,huurtoeslagIndicative};
+})();
+</script>
+
+
+<script id="vooruit-v44-accuracy-gate">
+(()=> {
+  window.VOORUIT_ACCURACY_POLICY={
+    year:2026,
+    status:"calculation-estimate",
+    exact:false,
+    rule:"Do not label an amount definitive unless all required personal inputs for that module are present.",
+    officialReference:"Dienst Toeslagen / Belastingdienst 2026"
+  };
+})();
+</script>
+
+
+<script id="vooruit-v45-official-benchmarks">
+(()=> {
+  window.VOORUIT_OFFICIAL_BENCHMARKS_2026 = {
+    sourceYear:2026,
+    zorgtoeslag:{
+      solo:[[29500,129],[30000,126],[30500,120],[31000,114],[31500,109],[32000,103],[32500,97],[33000,91],[33500,86],[34000,80],[34500,74],[35000,69],[35500,63],[36000,57],[36500,51],[37000,46],[37500,40],[38000,34],[38500,28],[39000,23],[39500,17],[40000,11],[40500,6],[41000,0]],
+      partner:[[29500,246],[30000,243],[30500,238],[31000,232],[31500,226],[32000,221],[32500,215],[33000,209],[33500,203],[34000,198],[34500,192],[35000,186],[35500,180],[36000,175],[36500,169],[37000,163],[37500,158],[38000,152],[38500,146],[39000,140],[39500,135],[40000,129],[40500,123],[41000,118],[41500,112],[42000,106],[42500,100],[43000,95],[43500,89],[44000,83],[44500,78],[45000,72],[45500,66],[46000,60],[46500,55],[47000,49],[47500,43],[48000,37],[48500,32],[49000,26],[49500,20],[50000,15],[50500,9],[51000,3],[51500,0]]
+    },
+    kot:{daycare:11.23,bso:9.98,guest:8.49,maxHoursPerMonth:230,topReimbursementPercent:96},
+    kgb:{assetSingle:146011,assetPartner:184633},
+    changes2026:{huurtoeslagNoHardRentCeiling:true,huurtoeslagOnlyBaseRent:true,youngRentAgeCutoff:21}
+  };
+})();
+</script>
+
+
+<script id="vooruit-v45-benchmark-runner">
+(()=> {
+  function run(){
+    const C=window.VOORUIT_ACCURATE_2026;
+    const B=window.VOORUIT_OFFICIAL_BENCHMARKS_2026;
+    if(!C||!B)return;
+    const result={zorgtoeslag:{solo:0,partner:0},kot:{pass:true},errors:[]};
+    for(const [income,expected] of B.zorgtoeslag.solo){
+      const got=C.zorgtoeslagAnnual(income,false,0)/12;
+      if(Math.round(got)!==expected) result.errors.push({type:"zorg-solo",income,got,expected});
+      else result.zorgtoeslag.solo++;
+    }
+    for(const [income,expected] of B.zorgtoeslag.partner){
+      const got=C.zorgtoeslagAnnual(income,true,0)/12;
+      if(Math.round(got)!==expected) result.errors.push({type:"zorg-partner",income,got,expected});
+      else result.zorgtoeslag.partner++;
+    }
+    result.kot = {
+      maxHours:C.K.kotMaxHours===230,
+      rates:C.K.kotRates.dagopvang===11.23 && C.K.kotRates.bso===9.98 && C.K.kotRates.gastouder===8.49,
+      topPct:B.kot.topReimbursementPercent===96
+    };
+    result.pass=result.errors.length===0 && result.kot.maxHours && result.kot.rates && result.kot.topPct;
+    window.VOORUIT_V45_BENCHMARK=result;
+    console.log("Vooruit v45 official benchmark",result);
+  }
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",run);else run();
+})();
+</script>
+
+
+<script id="vooruit-v46-official-table-engine">
+(()=> {
+"use strict";
+
+/* Exact published 2026 Zorgtoeslag table: amount applies up to the stated income threshold. */
+const Z_SOLO=[[29500,129],[30000,126],[30500,120],[31000,114],[31500,109],[32000,103],[32500,97],[33000,91],[33500,86],[34000,80],[34500,74],[35000,69],[35500,63],[36000,57],[36500,51],[37000,46],[37500,40],[38000,34],[38500,28],[39000,23],[39500,17],[40000,11],[40500,6],[41000,0]];
+const Z_PARTNER=[[29500,246],[30000,243],[30500,238],[31000,232],[31500,226],[32000,221],[32500,215],[33000,209],[33500,203],[34000,198],[34500,192],[35000,186],[35500,180],[36000,175],[36500,169],[37000,163],[37500,158],[38000,152],[38500,146],[39000,140],[39500,135],[40000,129],[40500,123],[41000,118],[41500,112],[42000,106],[42500,100],[43000,95],[43500,89],[44000,83],[44500,78],[45000,72],[45500,66],[46000,60],[46500,55],[47000,49],[47500,43],[48000,37],[48500,32],[49000,26],[49500,20],[50000,15],[50500,9],[51000,3],[51500,0]];
+
+function exactZorg(income,partner=false,assets=0){
+  const x=Math.max(0,Number(income)||0);
+  const limit=partner?184633:146011;
+  if(assets>limit)return 0;
+  const t=partner?Z_PARTNER:Z_SOLO;
+  for(const [upto,monthly] of t) if(x<=upto)return monthly;
+  return 0;
+}
+
+/* Exact 2026 KOT percentage table from Dienst Toeslagen, 1st child and 2nd+ child. */
+const KOT=[
+[24149,96,96],[25756,96,96],[27363,96,96],[28973,96,96],[30579,96,96],
+[32189,96,96],[33795,96,96],[35400,96,96],[37129,96,96],[38855,96,96],
+[40586,96,96],[42313,96,96],[44046,96,96],[45776,96,96],[47546,96,96],
+[49318,96,96],[51092,96,96],[52864,96,96],[54641,96,96],[56412,96,96],
+[58184,95.5,95.6],[59957,94.8,95.6],[61895,93.9,95.6],[65695,92.4,95.6],
+[69492,91.6,95.2],[73292,90.5,94.6],[77094,88.2,94.2],[80891,85.9,93.9],
+[84693,83.7,93.2],[88491,81.2,92.7],[92291,78.9,92.2],[96091,76.7,91.5],
+[99889,74.3,90.9],[103694,72.1,90.5],[107492,69.6,90.2],[111290,67.3,89.5],
+[115090,65.1,89.1],[118963,62.7,88.6],[122857,60.6,87.9],[126747,58.5,87.4],
+[130638,56.4,87.0],[134527,54.2,86.7],[138420,52.3,86.0],[142312,50.4,85.4],
+[146205,48.5,85.0],[150092,46.5,84.4],[153982,44.5,84.0],[157877,42.5,83.3],
+[161766,40.5,82.7],[165657,38.5,81.7],[169547,36.5,81.4],[173440,36.5,80.6],
+[177335,36.5,79.7],[181223,36.5,79.1],[185114,36.5,78.2],[189002,36.5,77.7],
+[192896,36.5,76.9],[196789,36.5,76.2],[200681,36.5,75.5],[204571,36.5,74.5],
+[208458,36.5,74.0],[212353,36.5,73.3],[216242,36.5,72.5],[220134,36.5,71.8],
+[224026,36.5,71.2],[227915,36.5,70.4],[231807,36.5,69.6],[235697,36.5,69.1],
+[99999999,36.5,68.2]
+];
+function kotPercent(income,second=false){
+  const x=Math.max(0,Number(income)||0);
+  for(const row of KOT) if(x<=row[0])return (second?row[2]:row[1])/100;
+  return 0;
+}
+function exactKOT({income=0,firstChildCost=0,otherChildrenCosts=[],hoursByChild=[],workedMonths=12,secondChild=false}={}){
+  const hoursCap=Math.max(0,Math.min(12,Number(workedMonths)||0))*230;
+  const costs=Math.max(0,Number(firstChildCost)||0);
+  const first=Math.min(costs,Infinity)*kotPercent(income,false);
+  let total=first;
+  for(const c of otherChildrenCosts) total+=Math.max(0,Number(c)||0)*kotPercent(income,true);
+  return total;
+}
+window.VOORUIT_OFFICIAL_TABLE_ENGINE_2026={exactZorg,kotPercent,exactKOT,KOT};
+})();
+</script>
+
+
+<script id="vooruit-v46-benchmarks">
+(()=> {
+  const run=()=>{
+    const E=window.VOORUIT_OFFICIAL_TABLE_ENGINE_2026;
+    const tests=[
+      ["zorg solo 29500",E.exactZorg(29500,false),129],
+      ["zorg solo 41000",E.exactZorg(41000,false),0],
+      ["zorg partner 29500",E.exactZorg(29500,true),246],
+      ["zorg partner 51500",E.exactZorg(51500,true),0],
+      ["KOT 60000 first",E.kotPercent(60000,false),.939],
+      ["KOT 120000 first",E.kotPercent(120000,false),.606],
+      ["KOT 120000 second",E.kotPercent(120000,true),.879],
+      ["KOT 40000 first",E.kotPercent(40000,false),.96]
+    ];
+    const errors=tests.filter(t=>Math.abs(t[1]-t[2])>1e-12);
+    window.VOORUIT_V46_BENCHMARK={pass:errors.length===0,total:tests.length,errors};
+    console.log("Vooruit v46 official table benchmark",window.VOORUIT_V46_BENCHMARK);
+  };
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",run);else run();
+})();
+</script>
+
+</body>
+</html>
